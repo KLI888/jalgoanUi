@@ -32,11 +32,11 @@ function LoginSignup() {
 
   const getCsrfToken = async () => {
     try {
-        const response = await axios.get(`${djangoApi}/app/csrf-token/`);
-        return response.data.csrfToken;
+      const response = await axios.get(`${djangoApi}/app/csrf-token/`);
+      return response.data.csrfToken;
     } catch (error) {
-        console.error('Error fetching CSRF token:', error);
-        return '';
+      console.error('Error fetching CSRF token:', error);
+      return '';
     }
   };
   const handleSubmit = async (e) => {
@@ -48,61 +48,46 @@ function LoginSignup() {
       const response = await axios.post(`${djangoApi}/app/register/`, {
         phone_number: phoneNumber,
         password: userPassword
+      }, {
+        headers: {
+          'X-CSRFToken': csrfToken,
+        }
       });
 
-      handleLoginSubmit(e)
-    } 
-    catch (error){
+      handleLoginSubmit(e);
+    } catch (error) {
+      console.error('Registration failed', error);
+    }
+
+  };
+
+  const handleLoginSubmit = async (e) => {
+    e.preventDefault();
+    const csrfToken = await getCsrfToken();
+
+    try {
+      const response = await axios.post(`${djangoApi}/app/login/`, {
+        phone_number: phoneNumber,
+        password: userPassword
+      }, {
+        headers: {
+          'X-CSRFToken': csrfToken,
+        },
+        withCredentials: true
+      });
+
+      const { user, token } = response.data;
+      setUser(user);
+      setIsLogin(true);
+      localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify(user));
+      setCloseForm(true);
+      console.log('Login successful', user);
+    } catch (error) {
       console.error('Login failed', error);
+      setErrorMessage('Login failed');
     }
-  
-};
-
-const handleLoginSubmit = async (event) => {
-  event.preventDefault();
-  try {
-    const response = await axios.post(`${djangoApi}/app/login/`, {
-      phone_number: phoneNumber,
-      password: userPassword
-    });
-
-    const { user, token } = response.data;
-
-    // Store the token in local storage
-    setUser(user)
-    setIsLogin(true)
-    localStorage.setItem('token', token);
-    console.log(token)
-    console.log(user)
-    // Optionally, you can store user info as well
-    localStorage.setItem('user', JSON.stringify(user));
-
-    // Redirect or perform other actions after successful login
-    console.log('Login successful', user);
-    setCloseForm(true)
-  } catch (error) {
-    console.error('Login failed', error);
-    // Handle login error (e.g., show an error message to the user)
-  }
-
-
-  try {
-    const response = await axios.post(`${djangoApi}/app/tokenKey/`, {
-      phone_number: phoneNumber,
-      password: userPassword
-    });
-
-    if (response.status === 200) {
-        // Store token in localStorage
-        localStorage.setItem('tokenKey', response.data.token);
-        console.log('Token stored successfully:', response.data.token);
-    } else {
-        console.error('Error:', response.data.error);
-    }
-  } catch (error) {
-      console.error('Error logging in:', error);
-  }
-};
+  };
 
   useEffect(() => {
     const checkUserSession = async () => {

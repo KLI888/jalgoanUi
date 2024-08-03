@@ -4,11 +4,6 @@ import axios from 'axios';
 import './AddListingForm.css';
 import { UserContext } from '../../context/UserContext';
 
-const adTypeOptions = [
-    { value: 'BA', label: 'Banner Ads' },
-    { value: 'CA', label: 'Carousel Ads' }
-];
-
 function AddAdvertiseForm() {
     const apiUrl = `${import.meta.env.VITE_DJANGO_API}/app/adsListing/`;
     const { user } = useContext(UserContext);
