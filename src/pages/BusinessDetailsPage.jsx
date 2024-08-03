@@ -12,6 +12,7 @@ function BusinessDetailsPage() {
 
   const {productId} = useParams()
   const [businessData, setBusinessData] = useState([])
+  // const [reviews, setReviews] = useState([])
 
   useEffect(() => {
     const token = localStorage.getItem('tokenKey');
@@ -36,6 +37,9 @@ function BusinessDetailsPage() {
 
     fetchData();
   }, [productId]);
+
+
+
   return (
     <div className='main_section'>
         <div className="page_location_tow"><Link to='/'>Home</Link> &gt; Search &gt; <Link to='/categories'>{businessData.main_category}</Link> &gt; <span>{businessData.business_name}</span></div>

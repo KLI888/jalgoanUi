@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
 import axios from 'axios';
 
-function BusinessCard({ businessData, is_like }) {
+function BusinessCard({ businessData, is_like, is_edit=false }) {
     console.log(businessData);
     const djangoApi = import.meta.env.VITE_DJANGO_API
     const { user } = useContext(UserContext);
@@ -46,7 +46,14 @@ function BusinessCard({ businessData, is_like }) {
             <div className="business_info">
                 <p className='business_name'>
                     <span>{businessData.business_name}</span>
-                    <i onClick={() => addLikedShop(user.id, businessData.id)} className='bx bx-heart'></i>
+                    {is_edit ? (
+                        <Link to={`/editForm/${businessData.id}`}>
+                            <i onClick={() => addLikedShop(user.id, businessData.id)} className='bx bxs-edit'></i>
+                        </Link>
+
+                    ) : (
+                        <i onClick={() => addLikedShop(user.id, businessData.id)} className='bx bx-heart'></i>
+                    )}
                 </p>
                 <div className="business_rating">
                     <span>5</span>
