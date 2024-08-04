@@ -8,6 +8,8 @@ const adTypeOptions = [
     { value: 'CA', label: 'Carousel Ads' }
 ];
 function AddAdvertiseForm() {
+    const djangoApi = import.meta.env.VITE_DJANGO_API;
+
     const apiUrl = `${import.meta.env.VITE_DJANGO_API}/app/adsListing/`;
     const { user } = useContext(UserContext);
 
