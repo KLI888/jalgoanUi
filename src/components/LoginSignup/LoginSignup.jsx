@@ -33,12 +33,14 @@ function LoginSignup() {
   const getCsrfToken = async () => {
     try {
       const response = await axios.get(`${djangoApi}/app/csrf-token/`);
+      console.log('Fetched CSRF Token:', response.data.csrfToken); // Log token for debugging
       return response.data.csrfToken;
     } catch (error) {
       console.error('Error fetching CSRF token:', error);
       return '';
     }
   };
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
