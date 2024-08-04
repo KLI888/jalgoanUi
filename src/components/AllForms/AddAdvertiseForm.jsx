@@ -58,7 +58,7 @@ function AddAdvertiseForm() {
         const token = localStorage.getItem('tokenKey');
         const csrfToken = await getCsrfToken();
 
-        setFormData({ ...formData, ['user']: user.id });
+        // setFormData({ ...formData, ['user']: user.id });
 
 
         const data = new FormData();
