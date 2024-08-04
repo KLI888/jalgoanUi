@@ -52,6 +52,17 @@ function AddListingForm({ is_edit = false }) {
         gmap_link: ''
     });
 
+    const getCsrfToken = async () => {
+        try {
+          const response = await axios.get(`${djangoApi}/app/csrf-token/`);
+          return response.data.csrfToken;
+        } catch (error) {
+          console.error('Error fetching CSRF token:', error);
+          return '';
+        }
+      };
+
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -83,9 +94,12 @@ function AddListingForm({ is_edit = false }) {
 
         if (is_edit && shopId) {
             const getShopData = async () => {
+                const csrfToken = await getCsrfToken();
+
                 try {
                     const response = await axios.get(apiUrl_editShop, {
                         headers: {
+                            'X-CSRFToken': csrfToken,
                             'Authorization': `Bearer ${localStorage.getItem('token')}`,
                         },
                         params: {
@@ -153,6 +167,7 @@ function AddListingForm({ is_edit = false }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const token = localStorage.getItem('tokenKey');
+        const csrfToken = await getCsrfToken();
 
         console.log(token);
         const data = new FormData();
@@ -177,6 +192,7 @@ function AddListingForm({ is_edit = false }) {
                 data,
                 {
                     headers: {
+                        'X-CSRFToken': csrfToken,
                         'Content-Type': 'multipart/form-data',
                         'Authorization': `Token ${token}`,  // Replace with actual token
                     },

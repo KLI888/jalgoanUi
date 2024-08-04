@@ -87,6 +87,25 @@ function LoginSignup() {
       console.error('Login failed', error);
       setErrorMessage('Login failed');
     }
+
+
+
+    try {
+      const response = await axios.post(`${djangoApi}/app/tokenKey/`, {
+        phone_number: phoneNumber,
+        password: userPassword
+      });
+  
+      if (response.status === 200) {
+          // Store token in localStorage
+          localStorage.setItem('tokenKey', response.data.token);
+          console.log('Token stored successfully:', response.data.token);
+      } else {
+          console.error('Error:', response.data.error);
+      }
+    } catch (error) {
+        console.error('Error logging in:', error);
+    }
   };
 
   useEffect(() => {

@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './Bottomnav.css';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import { FormContext } from '../../context/FormContext';
+import { UserContext } from '../../context/UserContext';
 
 function Bottomnav() {
   const [activeLink, setActiveLink] = useState('home');
+  const { closeForm, setCloseForm } = useContext(FormContext);
+  const { user, setUser } = useContext(UserContext);
 
   const handleLinkClick = (link) => {
     setActiveLink(link);
@@ -44,14 +48,32 @@ function Bottomnav() {
           <i className='bx bx-calendar'></i>
           <p>Events</p>
         </a>
-        <Link
+
+        {user ? (
+          <>
+            <Link
+              to="/account"
+              className={`bottom_nav_links ${activeLink === 'account' ? 'active' : ''}`}
+              onClick={() => handleLinkClick('account')}
+            >
+              <i className='bx bx-user-circle'></i>
+              <p>Account</p>
+            </Link>
+          </>
+        ) : (
+          <Link onClick={() => setCloseForm(!closeForm)} className="bottom_nav_links">
+            <i className='bx bx-user-circle'></i>
+            <p>Account</p>
+          </Link>
+        )}
+        {/* <Link
           to="/account"
           className={`bottom_nav_links ${activeLink === 'account' ? 'active' : ''}`}
           onClick={() => handleLinkClick('account')}
         >
           <i className='bx bx-user-circle'></i>
           <p>Account</p>
-        </Link>
+        </Link> */}
       </div>
     </div>
   );
