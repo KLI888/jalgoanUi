@@ -94,6 +94,11 @@ function LoginSignup() {
       const response = await axios.post(`${djangoApi}/app/tokenKey/`, {
         phone_number: phoneNumber,
         password: userPassword
+      },{
+        headers: {
+          'X-CSRFToken': csrfToken,
+          // 'Authorization': `Bearer YOUR_TOKEN_HERE`  // If required
+        }
       });
   
       if (response.status === 200) {
