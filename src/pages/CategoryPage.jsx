@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import Filtercategory from '../components/Filtercategory/Filtercategory'
 import Categorysection from '../components/Categorysection/Categorysection'
 import axios from "axios"
+import LoginSignup from '../components/LoginSignup/LoginSignup';
 function CategoryPage() {
   const { mainCategoryId, mainCategory } = useParams();
   const [businessData, setBusinessData] = useState([])
@@ -29,6 +30,7 @@ function CategoryPage() {
     <div className="main_section">
       <Filtercategory mainCategoryId={mainCategoryId} mainCategory={mainCategory}/>
       <Categorysection businessData={businessData}  />
+      <LoginSignup />
     </div>
   )
 }
