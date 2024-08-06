@@ -100,6 +100,7 @@ function LoginSignup() {
       },{
         headers: {
           'X-CSRFToken': csrfToken,
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
       });
   
