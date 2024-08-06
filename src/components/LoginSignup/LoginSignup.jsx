@@ -4,7 +4,6 @@ import axios from 'axios';
 import { assets } from '../../assets/assets';
 import { FormContext } from '../../context/FormContext';
 import { UserContext } from '../../context/UserContext';
-import { LoginContext } from '../../context/LoginContext';
 
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
@@ -22,7 +21,6 @@ client.interceptors.request.use((config) => {
 
 function LoginSignup() {
   const djangoApi = import.meta.env.VITE_DJANGO_API;
-  // const {  } = useContext(LoginContext);
   const { user, setUser, isLogin, setIsLogin } = useContext(UserContext);
   const { closeForm, setCloseForm } = useContext(FormContext);
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -59,8 +57,8 @@ function LoginSignup() {
       handleLoginSubmit(e);
     } catch (error) {
       console.error('Registration failed', error);
+      setErrorMessage('Registration failed');
     }
-
   };
 
   const handleLoginSubmit = async (e) => {
@@ -85,13 +83,16 @@ function LoginSignup() {
       localStorage.setItem('user', JSON.stringify(user));
       setCloseForm(true);
       console.log('Login successful', user);
+
+      // Fetch token key
+      await getTokenKey(csrfToken);
     } catch (error) {
       console.error('Login failed', error);
       setErrorMessage('Login failed');
     }
+  };
 
-
-
+  const getTokenKey = async (csrfToken) => {
     try {
       const response = await axios.post(`${djangoApi}/app/tokenKey/`, {
         phone_number: phoneNumber,
@@ -99,19 +100,19 @@ function LoginSignup() {
       },{
         headers: {
           'X-CSRFToken': csrfToken,
-          // 'Authorization': `Bearer YOUR_TOKEN_HERE`  // If required
         }
       });
   
       if (response.status === 200) {
-          // Store token in localStorage
-          localStorage.setItem('tokenKey', response.data.token);
-          console.log('Token stored successfully:', response.data.token);
+        // Store token in localStorage
+        localStorage.setItem('tokenKey', response.data.token);
+        console.log('Token stored successfully:', response.data.token);
       } else {
-          console.error('Error:', response.data.error);
+        console.error('Error:', response.data.error);
       }
     } catch (error) {
-        console.error('Error logging in:', error);
+      console.error('Error fetching token key:', error);
+      setErrorMessage('Error fetching token key');
     }
   };
 
