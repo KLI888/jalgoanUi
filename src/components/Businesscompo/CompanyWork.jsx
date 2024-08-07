@@ -14,11 +14,17 @@ function CompanyWork({ businessData }) {
 
     useEffect(() => {
         const fetchReview = async () => {
-            const token = localStorage.getItem('token');
+            const tokenKey = localStorage.getItem('tokenKey');
+            const csrfToken = await getCsrfToken();
+
             try {
                 const response = await axios.get(`${djangoApi}/app/get_shop_reviews/`, {
                     params: { shop_listing: businessData.id },
-                    headers: { 'Authorization': `Bearer ${token}` },
+                    headers: {
+                        'Authorization': `Token ${tokenKey}`,
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                        'X-CSRFToken': csrfToken,
+                    },
                 });
                 console.log(response.data);
                 const filteredReview = response.data.filter(review => review.shop_listing === businessData.id);
