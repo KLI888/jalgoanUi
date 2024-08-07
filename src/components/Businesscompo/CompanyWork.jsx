@@ -68,7 +68,7 @@ function CompanyWork({ businessData }) {
         try {
             const response = await axios.post(`${djangoApi}/app/shop_reviews/`, formData, {
                 headers: {
-                    'Authorization': `Token ${token}`,
+                    // 'Authorization': `Token ${token}`,
                     'Authorization': `Bearer ${token}`,
                     'X-CSRFToken': csrfToken,
                 },
