@@ -31,7 +31,7 @@ function CategoryPage() {
   return (
     <div className="main_section">
       <Filtercategory mainCategoryId={mainCategoryId} mainCategory={mainCategory}/>
-      <Categorysection businessData={businessData}  />
+      <Categorysection businessData={businessData} mainCategory={mainCategory}  />
       <LoginSignup />
     </div>
   )

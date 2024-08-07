@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom'
 import './Categorysection.css'
 import BusinessCard from './BusinessCard'
 import axios from 'axios';
-function Categorysection({businessData}) {
+function Categorysection({businessData, mainCategory}) {
   const djangoApi = import.meta.env.VITE_DJANGO_API;
   const [ads, setAds] = useState([]);
+  
 
     useEffect(() => {
         axios.get(`${djangoApi}/app/banner-ads/`)
@@ -21,8 +22,8 @@ function Categorysection({businessData}) {
     return (
         <div className="business_section">
             <div className="business_content">
-               <div className="page_location"><Link to=''>Home</Link> &gt; Search &gt; <span>Automotive</span></div> 
-               <div className="result_heading">Showing Results for <span>Automotive</span></div>
+               <div className="page_location"><Link to=''>Home</Link> &gt; Search &gt; <span>{mainCategory}</span></div> 
+               <div className="result_heading">Showing Results</div>
                <div className="business_cards_ads">
                 <div className="business_cards">
                 {businessData.map((business) => (

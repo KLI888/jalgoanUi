@@ -89,7 +89,7 @@ function CompanyWork({ businessData }) {
     return (
         <div className="companyWork">
             <div className="company_brands">
-                <h1>Vehicle Brands</h1>
+                <h1>Products and Services</h1>
                 <div className="brands">
                     <span>{businessData.sub_domain_one}</span>
                     <span>{businessData.sub_domain_two}</span>
