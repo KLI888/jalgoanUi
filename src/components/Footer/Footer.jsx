@@ -43,7 +43,7 @@ function Footer() {
                 <p className="contact_address">jalgaon office :- 7,mahada colony opp. bank of maharashtra, MIDC, jalgaon <br />
                 Bhusawal office :- pandawada, jalgaon road, near technical high school bhusawal</p>
                 <p className="contact_number">Tel: +91 9272100299</p>
-                <p className="contact_mail">Mail: rupesh@jalgaon.com</p>
+                <p className="contact_mail">Mail: support@jalgaon.com</p>
             </div>
         </div>
         <div className="footer_copyright">
