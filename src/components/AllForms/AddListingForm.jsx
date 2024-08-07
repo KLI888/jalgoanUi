@@ -493,21 +493,21 @@ function AddListingForm({ is_edit = false }) {
                                         name="business_img_one"
                                         // onChange={(e)=>{setBusinessImgOne(e.target.files[0])}}
                                         onChange={handleChange}
-                                        required
+                                        // required
                                     />
                                     <input
                                         type="file"
                                         name="business_img_two"
                                         // onChange={(e)=>{setBusinessImgTwo(e.target.files[0])}}
                                         onChange={handleChange}
-                                        required
+                                        // required
                                     />
                                     <input
                                         type="file"
                                         name="business_img_three"
                                         // onChange={(e)=>{setBusinessImgThree(e.target.files[0])}}
                                         onChange={handleChange}
-                                        required
+                                        // required
                                     />
                                 </div>
                             </div>

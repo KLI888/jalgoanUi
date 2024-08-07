@@ -56,7 +56,7 @@ function CompanyWork({ businessData }) {
 
     const submitReview = async (e) => {
         e.preventDefault();
-        const token = localStorage.getItem('tokenKey');
+        const token = localStorage.getItem('token');
         const csrfToken = await getCsrfToken();
 
         const formData = {
@@ -69,6 +69,7 @@ function CompanyWork({ businessData }) {
             const response = await axios.post(`${djangoApi}/app/shop_reviews/`, formData, {
                 headers: {
                     'Authorization': `Token ${token}`,
+                    'Authorization': `Bearer ${token}`,
                     'X-CSRFToken': csrfToken,
                 },
             });
