@@ -14,11 +14,11 @@ function CompanyWork({ businessData }) {
 
     useEffect(() => {
         const fetchReview = async () => {
-            const token = localStorage.getItem('tokenKey');
+            const token = localStorage.getItem('token');
             try {
                 const response = await axios.get(`${djangoApi}/app/get_shop_reviews/`, {
                     params: { shop_listing: businessData.id },
-                    headers: { 'Authorization': `Token ${token}` },
+                    headers: { 'Authorization': `Bearer ${token}` },
                 });
                 console.log(response.data);
                 const filteredReview = response.data.filter(review => review.shop_listing === businessData.id);
@@ -70,6 +70,7 @@ function CompanyWork({ businessData }) {
                 headers: {
                     // 'Authorization': `Token ${token}`,
                     'Authorization': `Bearer ${token}`,
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
                     'X-CSRFToken': csrfToken,
                 },
             });
@@ -82,6 +83,48 @@ function CompanyWork({ businessData }) {
 
     return (
         <div className="companyWork">
+            <div className="company_brands">
+                <h1>Vehicle Brands</h1>
+                <div className="brands">
+                    <span>{businessData.sub_domain_one}</span>
+                    <span>{businessData.sub_domain_two}</span>
+                    <span>{businessData.sub_domain_three}</span>
+                    <span>{businessData.sub_domain_four}</span>
+                    <span>{businessData.sub_domain_five}</span>
+                </div>
+            </div>
+            <div className="company_profile">
+                <h1>Company Profile</h1>
+                <div className="profile_info">
+                    <div className="business_origin">
+                        <p>Country of Origin</p>
+                        <span>{businessData.business_origin}</span>
+                    </div>
+                    <div className="vr_line"></div>
+                    <div className="business_estab">
+                        <p>Year of Establishment</p>
+                        <span>{businessData.business_dob}</span>
+                    </div>
+                    <div className="vr_line"></div>
+                    <div className="business_gst">
+                        <p>GST Number</p>
+                        <span>{businessData.business_gst}</span>
+                    </div>
+
+                </div>
+            </div>
+            <div className="company_desc">
+                <h1>Description</h1>
+                <p>{businessData.business_description}</p>
+            </div>
+            <div className="company_photos">
+                <h1>Photos</h1>
+                <div className="phtos">
+                    <img src={`${djangoApi}/${businessData.business_img_one}`} alt="" />
+                    <img src={`${djangoApi}/${businessData.business_img_two}`} alt="" />
+                    <img src={`${djangoApi}/${businessData.business_img_three}`} alt="" />
+                </div>
+            </div>
             {/* Rest of your component code */}
             <div className="company_reviw">
                 <h1>Add Your Review</h1>
