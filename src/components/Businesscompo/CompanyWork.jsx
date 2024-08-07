@@ -70,7 +70,6 @@ function CompanyWork({ businessData }) {
                 headers: {
                     // 'Authorization': `Token ${token}`,
                     'Authorization': `Bearer ${token}`,
-                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
                     'X-CSRFToken': csrfToken,
                 },
             });
