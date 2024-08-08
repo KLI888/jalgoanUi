@@ -122,14 +122,14 @@ function CompanyWork({ businessData }) {
                 <h1>Description</h1>
                 <p>{businessData.business_description}</p>
             </div>
-            <div className="company_photos">
+            {/* <div className="company_photos">
                 <h1>Photos</h1>
                 <div className="phtos">
                     <img src={`${djangoApi}/${businessData.business_img_one}`} alt="" />
                     <img src={`${djangoApi}/${businessData.business_img_two}`} alt="" />
                     <img src={`${djangoApi}/${businessData.business_img_three}`} alt="" />
                 </div>
-            </div>
+            </div> */}
             {/* Rest of your component code */}
             <div className="company_reviw">
                 <h1>Add Your Review</h1>
