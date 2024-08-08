@@ -141,8 +141,26 @@ function AddListingForm({ is_edit = false }) {
         setFormData(prevData => ({
             ...prevData,
             [name]: type === 'file' ? files[0] : value
+            
         }));
     };
+
+
+    const handleFileChange = (e) => {
+        const { type, files } = e.target;
+    
+        if (type === 'file' && files.length > 0) {
+            const selectedFile = files[0];
+            setFormData(prevData => ({
+                ...prevData,
+                business_banner: selectedFile,
+                business_img_one: selectedFile,
+                business_img_two: selectedFile,
+                business_img_three: selectedFile,
+            }));
+        }
+    };
+    
 
     const getUserLocation = (e) => {
         e.preventDefault();
@@ -482,11 +500,11 @@ function AddListingForm({ is_edit = false }) {
                                         //         ["business_banner"]: busniessBanner
                                         //     }));
                                         // }}
-                                        onChange={handleChange}
+                                        onChange={handleFileChange}
                                         required
                                     />
                                 </div>
-                                <div className="input_data">
+                                {/* <div className="input_data">
                                     <label htmlFor="imgOne">Business Photos</label>
                                     <input
                                         type="file"
@@ -509,7 +527,7 @@ function AddListingForm({ is_edit = false }) {
                                         onChange={handleChange}
                                         // required
                                     />
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                         <hr className="form_hr" />
