@@ -797,10 +797,10 @@ function AddListingForm({ is_edit = false }) {
                                         //         ["business_banner"]: busniessBanner
                                         //     }));
                                         // }}
-                                        onChange={handleChange}
+                                        onChange={handleFileChange}
                                     />
                                 </div>
-                                <div className="input_data">
+                                {/* <div className="input_data">
                                     <label htmlFor="imgOne">Business Photos</label>
                                     <input
                                         type="file"
@@ -820,7 +820,7 @@ function AddListingForm({ is_edit = false }) {
                                         // onChange={(e)=>{setBusinessImgThree(e.target.files[0])}}
                                         onChange={handleChange}
                                     />
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                         <hr className="form_hr" />
