@@ -29,7 +29,7 @@ function Bottomnav() {
           className={`bottom_nav_links ${activeLink === 'directory' ? 'active' : ''}`}
           onClick={() => handleLinkClick('directory')}
         >
-          <i className='bx bx-folder'></i>
+          <i className='bx bxs-business'></i>
           <p>Directory</p>
         </NavLink>
         <NavLink
