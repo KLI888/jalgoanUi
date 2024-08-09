@@ -30,7 +30,7 @@ function Bottomnav() {
           onClick={() => handleLinkClick('directory')}
         >
           <i className='bx bxs-business'></i>
-          <p>Directory</p>
+          <p>Advertise</p>
         </NavLink>
         <NavLink
           to="/addListig"
