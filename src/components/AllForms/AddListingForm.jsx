@@ -147,57 +147,59 @@ function AddListingForm({ is_edit = false }) {
     };
 
 
-    // const handleFileChange = (e) => {
-    //     const { type, files } = e.target;
-    
-    //     if (type === 'file' && files.length > 0) {
-    //         const selectedFile = files[0];
-
-
-
-
-    //         setFormData(prevData => ({
-    //             ...prevData,
-    //             business_banner: selectedFile,
-    //             business_img_one: selectedFile,
-    //             business_img_two: selectedFile,
-    //             business_img_three: selectedFile,
-    //         }));
-    //     }
-    // };
-    
-
-
-    const handleFileChange = async (e) => {
+    const handleFileChange = (e) => {
         const { type, files } = e.target;
     
         if (type === 'file' && files.length > 0) {
             const selectedFile = files[0];
-    
-            // Define compression options
-            const options = {
-                maxSizeMB: 0.17, // Compress to a maximum size of 170KB
-                maxWidthOrHeight: 1920, // Optional: adjust based on your needs
-                useWebWorker: true, // Use web worker for faster compression
-            };
-    
-            try {
-                // Compress the image
-                const compressedFile = await imageCompression(selectedFile, options);
-    
-                // Update formData with the compressed file
-                setFormData(prevData => ({
-                    ...prevData,
-                    business_banner: compressedFile,
-                    business_img_one: compressedFile,
-                    business_img_two: compressedFile,
-                    business_img_three: compressedFile,
-                }));
-            } catch (error) {
-                console.error("Error compressing the image:", error);
-            }
+
+
+
+
+            setFormData(prevData => ({
+                ...prevData,
+                business_banner: selectedFile,
+                business_img_one: selectedFile,
+                business_img_two: selectedFile,
+                business_img_three: selectedFile,
+            }));
         }
     };
+    
+
+
+    // const handleFileChange = async (e) => {
+    //     const { type, files } = e.target;
+    
+    //     if (type === 'file' && files.length > 0) {
+    //         const selectedFile = files[0];
+    
+    //         // Define compression options
+    //         const options = {
+    //             maxSizeMB: 0.17, // Compress to a maximum size of 170KB
+    //             maxWidthOrHeight: 1920, // Optional: adjust based on your needs
+    //             useWebWorker: true, // Use web worker for faster compression
+    //         };
+
+
+    //         try {
+    //             // Compress the image
+    //             const compressedFile = await imageCompression(selectedFile, options);
+    //             console.log(compressedFile);
+                
+    //             // Update formData with the compressed file
+    //             setFormData(prevData => ({
+    //                 ...prevData,
+    //                 business_banner: compressedFile,
+    //                 business_img_one: compressedFile,
+    //                 business_img_two: compressedFile,
+    //                 business_img_three: compressedFile,
+    //             }));
+    //         } catch (error) {
+    //             console.error("Error compressing the image:", error);
+    //         }
+    //     }
+    // };
 
     const getUserLocation = (e) => {
         e.preventDefault();
