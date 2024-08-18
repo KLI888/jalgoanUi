@@ -20,31 +20,25 @@ function Footer() {
                 <div className="links">
                     <ul className="links_list">
                         <Link to="/about" className="link">About</Link>
-                        <a href="" className="link">Blog</a>
+                        <Link to="/allarticlse" className="link">Article</Link>
                         <a href="" className="link">News</a>
-                        <a href="" className="link">Advertise</a>
+                        <Link to="/contact" className="link">Contact</Link>
                     </ul>    
                     <ul className="links_list">
                         <a href="" className="link">Events</a>
                         <a href="" className="link">Directory</a>
                         <a href="" className="link">NGO</a>
-                        <a href="" className="link">Add Listing</a>
+                        <Link to="/addListig" className="link">Add Listing</Link>
                     </ul>
                     <ul className="links_list">
                         <a href="" className="link">Feedback</a>
-                        <a href="" className="link">Blog</a>
+                        <a href="" className="link">Article</a>
                         <a href="" className="link">Testimonials</a>
                         <Link to="/termsAndCondition" className="link">Terms & Conditions</Link>
                     </ul>
                 </div>
             </div>
-            <div className="footer_contact">
-                <h1>Contact Us</h1>
-                <p className="contact_address">jalgaon office :- 7,mahada colony opp. bank of maharashtra, MIDC, jalgaon <br />
-                Bhusawal office :- pandawada, jalgaon road, near technical high school bhusawal</p>
-                <p className="contact_number">Tel: +91 9272100299</p>
-                <p className="contact_mail">Mail: support@jalgaon.com</p>
-            </div>
+
         </div>
         <div className="footer_copyright">
             <div className="copyright_content">
