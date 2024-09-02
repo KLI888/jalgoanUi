@@ -12,18 +12,30 @@ function Search() {
 
   const handleSearch = async () => {
     console.log('Search query:', query);
-    await axios.get(`${djangoApi}/app/searchResult/?search=${query}`) 
-    .then(response => {
+    
+    if (!query) {
+      console.log("Query is empty, please enter a search term.");
+      return;
+    }
+  
+    try {
+      const response = await axios.get(`${djangoApi}/app/searchResult/?search=${query}`);
       console.log(response.data);
-      setSearchData(response.data)
-      navigate(`/searchResults`, { state: { searchData } });
-
-    })
-    .catch(error => {
-      console.error('Error fetching data ads:', error);
-    });
+      
+      // Set the search data to state
+      setSearchData(response.data);
+  
+      // Navigate to the results page and pass the search data
+      navigate('/searchResults', { state: { searchData } });
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      
+      if (error.response && error.response.status === 404) {
+        console.log("No search results found for the query.");
+      }
+    }
   };
-
+  
   const handleKeyDown = (event) => {
       if (event.key === 'Enter') {
           event.preventDefault();  // Prevents the default form submission behavior
