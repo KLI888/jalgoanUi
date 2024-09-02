@@ -35,9 +35,13 @@ function Categorysection({ businessData, mainCategory, filterSubCategory }) {
         <div className="business_cards_ads">
           <div className="business_cards">
             {filteredBusinessData.map((business) =>
-              business.is_valid ? (
-                <BusinessCard key={business.id} businessData={business} is_like={false} />
-              ) : null
+              // business.is_valid ? (
+              //   <BusinessCard key={business.id} businessData={business} is_like={false} />
+              // ) : null
+              (
+                <Link to={`/productView/${business.id}`}>
+                <BusinessCard key={business.id} businessData={business} is_like={false} /></Link>
+              )
             )}
           </div>
           <div className="business_ads">
