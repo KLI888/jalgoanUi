@@ -10,23 +10,38 @@ function Search() {
   const [query, setQuery] = useState('')
   const [searchData, setSearchData] = useState([])
 
+  const getCsrfToken = async () => {
+    try {
+      const response = await axios.get(`${djangoApi}/app/csrf-token/`);
+      return response.data.csrfToken;
+    } catch (error) {
+      console.error('Error fetching CSRF token:', error);
+      return '';
+    }
+  };
+
   const handleSearch = async () => {
     console.log('Search query:', query);
-    
+    const csrfToken = await getCsrfToken();
+
     if (!query) {
       console.log("Query is empty, please enter a search term.");
       return;
     }
   
     try {
-      const response = await axios.get(`${djangoApi}/app/searchResult/?search=${query}`);
+      const response = await axios.get(`${djangoApi}/app/searchResult/?search=${query}`, {
+        headers: {
+          'X-CSRFToken': csrfToken
+        }
+      });
       console.log(response.data);
+      navigate('/searchResults', { state: { searchData: response.data } });
       
       // Set the search data to state
       setSearchData(response.data);
   
       // Navigate to the results page and pass the search data
-      navigate('/searchResults', { state: { searchData } });
     } catch (error) {
       console.error('Error fetching data:', error);
       
@@ -40,6 +55,7 @@ function Search() {
       if (event.key === 'Enter') {
           event.preventDefault();  // Prevents the default form submission behavior
           handleSearch();  // Call the search function when Enter is pressed
+
         }
   };
 

@@ -33,9 +33,9 @@ function SearchSection({searchData}){
           <div className="business_cards_ads">
             <div className="business_cards">
               {searchData.map((business) =>
-                business.is_valid ? (
-                  <BusinessCard key={business.id} businessData={business} is_like={false} />
-                ) : null
+                  (
+                    <BusinessCard key={business.id} businessData={business} is_like={false} />
+                  )
               )}
             </div>
             <div className="business_ads">
