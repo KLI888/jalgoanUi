@@ -30,11 +30,7 @@ function Search() {
     }
   
     try {
-      const response = await axios.get(`${djangoApi}/app/searchResult/?search=${query}`, {
-        headers: {
-          'X-CSRFToken': csrfToken
-        }
-      });
+      const response = await axios.get(`${djangoApi}/app/searchResult/?search=${query}`);
       console.log(response.data);
       navigate('/searchResults', { state: { searchData: response.data } });
       
