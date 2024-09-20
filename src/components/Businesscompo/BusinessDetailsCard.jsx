@@ -3,7 +3,17 @@ import './BusinessCompo.css'
 import { Link } from 'react-router-dom'
 function BusinessDetailsCard({businessData}) {
     const djangoApi = import.meta.env.VITE_DJANGO_API
-
+    const handleShare = () => {
+        const currentUrl = window.location.href; // Get current URL
+    
+        navigator.clipboard.writeText(currentUrl).then(() => {
+          // Successfully copied to clipboard
+          alert('URL copied to clipboard!');
+        }).catch((error) => {
+          // Error occurred
+          console.error('Failed to copy URL:', error);
+        });
+      };
     return (
         <div className="business_details_card">
             <div className="business_card">
@@ -30,7 +40,7 @@ function BusinessDetailsCard({businessData}) {
                         <a href={`tel:${businessData.business_no}`} className='business_call_btn' target="_blank" rel="noopener noreferrer"><i class='bx bxs-phone'></i> Call Us</a>
                         <a href={`https://wa.me/+91${businessData.business_no}`} target="_blank" rel="noopener noreferrer"><p><i class='bx bxl-whatsapp'></i> Whatsapp</p></a>
                         <a href={businessData.gmap_link} target="_blank" rel="noopener noreferrer"><p><i class='bx bxs-direction-right'></i> Direction</p></a>
-                        <a href='' target="_blank" rel="noopener noreferrer"><p><i class='bx bx-share-alt'></i> <span>Share</span></p></a>
+                        <a href='' target="_blank" rel="noopener noreferrer"><p onClick={handleShare}><i class='bx bx-share-alt'></i> <span>Share</span></p></a>
                     </div>
                 </div>
                 <div className="business_img">
