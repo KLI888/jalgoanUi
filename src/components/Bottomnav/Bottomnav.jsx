@@ -41,7 +41,7 @@ function Bottomnav() {
           <p>Add Listing</p>
         </NavLink>
         <NavLink
-          to="/"
+          to="/addListig"
           className={`bottom_nav_links ${activeLink === 'news' ? 'active' : ''}`}
           onClick={() => handleLinkClick('news')}
         >

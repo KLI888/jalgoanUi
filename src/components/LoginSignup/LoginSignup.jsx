@@ -38,7 +38,7 @@ function LoginSignup() {
       return '';
     }
   };
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -97,13 +97,13 @@ function LoginSignup() {
       const response = await axios.post(`${djangoApi}/app/tokenKey/`, {
         phone_number: phoneNumber,
         password: userPassword
-      },{
+      }, {
         headers: {
           'X-CSRFToken': csrfToken,
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
       });
-  
+
       if (response.status === 200) {
         // Store token in localStorage
         localStorage.setItem('tokenKey', response.data.token);
@@ -149,7 +149,28 @@ function LoginSignup() {
           <label htmlFor="mobile-number">Mobile Number</label>
           <div className="number_input">
             <img src={assets.flag} alt="Flag" />
-            <input type="text" name='phone_number' value={phoneNumber} id='mobile-number' onChange={(e) => setPhoneNumber(e.target.value)} required />
+            {/* <input type="number" maxLength={10} name='phone_number' value={phoneNumber} id='mobile-number' onChange={(e) => setPhoneNumber(e.target.value)} required /> */}
+            <input
+              type="number"
+              name="phone_number"
+              value={phoneNumber}
+              id="mobile-number"
+              onChange={(e) => {
+                const value = e.target.value;
+                // Allow only numbers with a max of 10 digits
+                if (value.length <= 10) {
+                  setPhoneNumber(value);
+                }
+              }}
+              required
+              onKeyDown={(e) => {
+                // Prevent entering 'e', '-', '.', '+', etc.
+                if (["e", "E", "+", "-", "."].includes(e.key)) {
+                  e.preventDefault();
+                }
+              }}
+            />
+
           </div>
           <label htmlFor="user-password">Password</label>
           <div className="number_input">

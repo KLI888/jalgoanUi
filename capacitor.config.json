@@ -1,5 +1,11 @@
 {
   "appId": "com.jalgaon.app",
   "appName": "Jalgaon.Com",
-  "webDir": "dist"
+  "webDir": "dist",
+  "server": {
+    "allowNavigation": [
+      "https://api.jalgaon.com",
+      "https://www.jalgaon.com"
+    ]
+  }
 }
