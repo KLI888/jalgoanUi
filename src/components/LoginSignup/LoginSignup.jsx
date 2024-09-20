@@ -155,6 +155,7 @@ function LoginSignup() {
               name="phone_number"
               value={phoneNumber}
               id="mobile-number"
+              placeholder='phone number'
               onChange={(e) => {
                 const value = e.target.value;
                 // Allow only numbers with a max of 10 digits
@@ -175,7 +176,7 @@ function LoginSignup() {
           <label htmlFor="user-password">Password</label>
           <div className="number_input">
             <img src={assets.flag} alt="Flag" />
-            <input type="password" name='password' value={userPassword} id='user-password' onChange={(e) => setUserPassword(e.target.value)} required />
+            <input type="password" placeholder='password' name='password' value={userPassword} id='user-password' onChange={(e) => setUserPassword(e.target.value)} required />
           </div>
           <span>By Login or Signup I accept terms and conditions</span>
           {errorMessage && <p className="error_message">{errorMessage}</p>}
@@ -197,12 +198,35 @@ function LoginSignup() {
           <label htmlFor="mobile-number">Mobile Number</label>
           <div className="number_input">
             <img src={assets.flag} alt="Flag" />
-            <input type="text" name='phone_number' value={phoneNumber} id='mobile-number' onChange={(e) => setPhoneNumber(e.target.value)} required />
+            {/* <input type="text" name='phone_number' value={phoneNumber} id='mobile-number' onChange={(e) => setPhoneNumber(e.target.value)} required />
+             */}
+            <input
+              type="number"
+              name="phone_number"
+              value={phoneNumber}
+              id="mobile-number"
+              placeholder='phone number'
+              onChange={(e) => {
+                const value = e.target.value;
+                // Allow only numbers with a max of 10 digits
+                if (value.length <= 10) {
+                  setPhoneNumber(value);
+                }
+              }}
+              required
+              onKeyDown={(e) => {
+                // Prevent entering 'e', '-', '.', '+', etc.
+                if (["e", "E", "+", "-", "."].includes(e.key)) {
+                  e.preventDefault();
+                }
+              }}
+            />
+
           </div>
           <label htmlFor="user-password">Password</label>
           <div className="number_input">
             <img src={assets.flag} alt="Flag" />
-            <input type="password" name='password' value={userPassword} id='user-password' onChange={(e) => setUserPassword(e.target.value)} required />
+            <input type="password" placeholder='password' name='password' value={userPassword} id='user-password' onChange={(e) => setUserPassword(e.target.value)} required />
           </div>
           <span>By Login or Signup I accept terms and conditions</span>
           {errorMessage && <p className="error_message">{errorMessage}</p>}
