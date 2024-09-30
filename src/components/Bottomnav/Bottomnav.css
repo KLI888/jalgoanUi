@@ -59,4 +59,12 @@
     }
 }
 
+@media (max-width: 310px) {
+    .bottom_nav_links p {
+        /* font-size: 9px; */
+        display: none;
+    }
+}
+
+
 
