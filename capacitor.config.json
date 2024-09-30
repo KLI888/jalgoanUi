@@ -1,11 +1,12 @@
 {
   "appId": "com.jalgaon.app",
-  "appName": "Jalgaon.Com",
+  "appName": "my-webview-app",
   "webDir": "dist",
   "server": {
     "allowNavigation": [
       "https://api.jalgaon.com",
       "https://www.jalgaon.com"
-    ]
+    ],
+    "cleartext": true
   }
 }
