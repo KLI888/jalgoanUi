@@ -21,7 +21,7 @@ function BusinessDetailsPage() {
     const fetchData = async () => {
       try {
         console.log("Fetching data...");
-        const token = "your_token_here"; // Replace with your actual token
+        // const token = "your_token_here"; 
         const response = await axios.get(`${djangoApi}/app/business-view/`, {
           params: { productId },
           headers: {
