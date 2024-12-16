@@ -57,7 +57,7 @@ function Advertise() {
     <div className="advertise_container">
       <div className="slide_container">
         {sliedData.map((item, index) => {
-          return <a href=''><img key={index} src={`${import.meta.env.VITE_DJANGO_API}/${item.crousel_add_img}`} className={slide === index ? "slider_img_div" : "slider_img_div_hidden"} /></a>;
+          return <a href={item.crousel_add_img_url}><img key={index} src={`${import.meta.env.VITE_DJANGO_API}/${item.crousel_add_img}`} className={slide === index ? "slider_img_div" : "slider_img_div_hidden"} /></a>;
         })}
         <span className="indicators">
           {sliedData.map((_, index)=> {
