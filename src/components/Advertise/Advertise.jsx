@@ -1,6 +1,8 @@
 import React, { useState, useEffect  } from 'react';
 import './Advertise.css';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+
 const divStyle = {
   // display: 'flex',
   // alignItems: 'center',
@@ -57,7 +59,7 @@ function Advertise() {
     <div className="advertise_container">
       <div className="slide_container">
         {sliedData.map((item, index) => {
-          return <a key={index} href={item.crousel_add_img_url}><img key={index} src={`${import.meta.env.VITE_DJANGO_API}/${item.crousel_add_img}`} className={slide === index ? "slider_img_div" : "slider_img_div_hidden"} /></a>;
+          return <Link key={index} to={item.id}><img key={index} src={`${import.meta.env.VITE_DJANGO_API}/${item.crousel_add_img}`} className={slide === index ? "slider_img_div" : "slider_img_div_hidden"} /></a>;
         })}
         <span className="indicators">
           {sliedData.map((_, index)=> {
