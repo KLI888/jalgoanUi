@@ -57,7 +57,7 @@ function Advertise() {
     <div className="advertise_container">
       <div className="slide_container">
         {sliedData.map((item, index) => {
-          return <img key={index} src={`${import.meta.env.VITE_DJANGO_API}/${item.crousel_add_img}`} className={slide === index ? "slider_img_div" : "slider_img_div_hidden"} />;
+          return <a href=''><img key={index} src={`${import.meta.env.VITE_DJANGO_API}/${item.crousel_add_img}`} className={slide === index ? "slider_img_div" : "slider_img_div_hidden"} /></a>;
         })}
         <span className="indicators">
           {sliedData.map((_, index)=> {
@@ -68,10 +68,16 @@ function Advertise() {
 
       <div className="banner_ads">
         {ads.banner_add_home_one && (
-          <img src={`${import.meta.env.VITE_DJANGO_API}/${ads.banner_add_home_one}`} alt="Home Banner One" />
+          <a href={ads.banner_add_home_one_url}>
+            <img src={`${import.meta.env.VITE_DJANGO_API}/${ads.banner_add_home_one}`} alt="Home Banner One" />
+          </a>
+          
         )}
         {ads.banner_add_home_two && (
-          <img src={`${import.meta.env.VITE_DJANGO_API}/${ads.banner_add_home_two}`} alt="Home Banner Two" />
+          <a href={ads.banner_add_home_two_url}>
+            <img src={`${import.meta.env.VITE_DJANGO_API}/${ads.banner_add_home_two}`} alt="Home Banner Two" />
+          </a>
+          
         )}
       </div>
     </div>
