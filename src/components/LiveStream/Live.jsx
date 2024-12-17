@@ -47,7 +47,7 @@ function Live() {
   // Rerun effect when csrfToken or id changes
 
   if (!ads.crousel_add_img_code) {
-    return <div>Loading...</div>; // Loading state if ad data is not available
+    return <div className="iframe-container">Loading...</div>; // Loading state if ad data is not available
   }
 
   return (
