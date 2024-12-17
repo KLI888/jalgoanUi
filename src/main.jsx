@@ -18,10 +18,7 @@ import TermsPage from './pages/TermsPage';
 import AddListingForm from './components/AllForms/AddListingForm';
 import ContactPage from './pages/ContactPage';
 import SearchPage from './pages/SearchPage';
-<<<<<<< HEAD
-=======
 import Live from './components/LiveStream/Live';
->>>>>>> 54d68c6b6fcf0340fe23b86cd768002ea27c124b
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout />}>
@@ -37,10 +34,7 @@ const router = createBrowserRouter(
       <Route path='searchResults' element={<SearchPage />} />
       
       <Route path='about' element={<AboutPage />} />
-<<<<<<< HEAD
-=======
       <Route path='live:id' element={<Live />} />/
->>>>>>> 54d68c6b6fcf0340fe23b86cd768002ea27c124b
       <Route path='contact' element={<ContactPage />} />
       <Route path='termsAndCondition' element={<TermsPage />} />
       <Route path='editForm/:shopId' element={<AddListingForm is_edit={true}/>} />
