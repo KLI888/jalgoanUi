@@ -28,6 +28,8 @@ function Advertise() {
       .then(response => {
         setSlideData(response.data.ads);
         console.log(slideData)
+        console.log(response.data.ads)
+        
       })
       .catch(error => {
         console.error('Error fetching carousel ads:', error);
