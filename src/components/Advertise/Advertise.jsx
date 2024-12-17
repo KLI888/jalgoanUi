@@ -27,6 +27,7 @@ function Advertise() {
     axios.get(apiUrl)
       .then(response => {
         setSlideData(response.data.ads);
+        console.log(response.data)
       })
       .catch(error => {
         console.error('Error fetching carousel ads:', error);
