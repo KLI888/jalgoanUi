@@ -27,8 +27,8 @@ function Advertise() {
     axios.get(apiUrl)
       .then(response => {
         setSlideData(response.data.ads);
-        console.log(slideData)
-        console.log(response.data.ads)
+        console.log(sliedData)
+        console.log(response.data)
         
       })
       .catch(error => {
@@ -62,7 +62,7 @@ function Advertise() {
     <div className="advertise_container">
       <div className="slide_container">
         {sliedData.map((item, index) => {
-          return <Link key={index} to={item.id}><img key={index} src={`${import.meta.env.VITE_DJANGO_API}/${item.crousel_add_img}`} className={slide === index ? "slider_img_div" : "slider_img_div_hidden"} /></a>;
+          return <a key={index} href={item.id}><img key={index} src={`${import.meta.env.VITE_DJANGO_API}/${item.crousel_add_img}`} className={slide === index ? "slider_img_div" : "slider_img_div_hidden"} /></a>;
         })}
         <span className="indicators">
           {sliedData.map((_, index)=> {
