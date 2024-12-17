@@ -10,6 +10,8 @@ function Live() {
 
   const getCsrfToken = async () => {
     try {
+      const csrfToken = await getCsrfToken();
+
       const response = await axios.get(`${djangoApi}/app/csrf-token/`);
       return response.data.csrfToken;
     } catch (error) {
