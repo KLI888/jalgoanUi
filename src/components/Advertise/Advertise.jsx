@@ -1,14 +1,9 @@
-<<<<<<< HEAD
+
 import React, { useState, useEffect  } from 'react';
 import './Advertise.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-=======
-import React, { useState, useEffect } from 'react';
-import './Advertise.css';
-import axios from 'axios';
->>>>>>> 54d68c6b6fcf0340fe23b86cd768002ea27c124b
 const divStyle = {
   // display: 'flex',
   // alignItems: 'center',
@@ -29,7 +24,6 @@ function Advertise() {
   const [ads, setAds] = useState([]);
 
 
-<<<<<<< HEAD
   useEffect(()=> {
     axios.get(apiUrl)
       .then(response => {
@@ -37,12 +31,10 @@ function Advertise() {
         console.log(sliedData)
         console.log(response.data)
         
-=======
   useEffect(() => {
     axios.get(apiUrl)
       .then(response => {
         setSlideData(response.data.ads);
->>>>>>> 54d68c6b6fcf0340fe23b86cd768002ea27c124b
       })
       .catch(error => {
         console.error('Error fetching carousel ads:', error);
@@ -75,13 +67,11 @@ function Advertise() {
     <div className="advertise_container">
       <div className="slide_container">
         {sliedData.map((item, index) => {
-<<<<<<< HEAD
           return <a key={index} href={item.id}><img key={index} src={`${import.meta.env.VITE_DJANGO_API}/${item.crousel_add_img}`} className={slide === index ? "slider_img_div" : "slider_img_div_hidden"} /></a>;
         })}
         <span className="indicators">
           {sliedData.map((_, index)=> {
             return <button key={index} onClick={()=> setSlide(index)} className={slide === index ? "indicator indicator_active": "indicator"}></button>
-=======
           return <Link key={index} to={`/live/${item.id}`}>
             <img
               src={`${import.meta.env.VITE_DJANGO_API}/${item.crousel_add_img}`}
@@ -93,7 +83,6 @@ function Advertise() {
         <span className="indicators">
           {sliedData.map((_, index) => {
             return <button key={index} onClick={() => setSlide(index)} className={slide === index ? "indicator indicator_active" : "indicator"}></button>
->>>>>>> 54d68c6b6fcf0340fe23b86cd768002ea27c124b
           })}
         </span>
       </div>
@@ -103,21 +92,14 @@ function Advertise() {
           <a href={ads.banner_add_home_one_url}>
             <img src={`${import.meta.env.VITE_DJANGO_API}/${ads.banner_add_home_one}`} alt="Home Banner One" />
           </a>
-<<<<<<< HEAD
           
-=======
 
->>>>>>> 54d68c6b6fcf0340fe23b86cd768002ea27c124b
         )}
         {ads.banner_add_home_two && (
           <a href={ads.banner_add_home_two_url}>
             <img src={`${import.meta.env.VITE_DJANGO_API}/${ads.banner_add_home_two}`} alt="Home Banner Two" />
           </a>
-<<<<<<< HEAD
-          
-=======
 
->>>>>>> 54d68c6b6fcf0340fe23b86cd768002ea27c124b
         )}
       </div>
     </div>
