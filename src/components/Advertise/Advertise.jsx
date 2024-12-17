@@ -1,4 +1,4 @@
-import React, { useState, useEffect  } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Advertise.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -23,13 +23,13 @@ function Advertise() {
   const [ads, setAds] = useState([]);
 
 
-  useEffect(()=> {
+  useEffect(() => {
     axios.get(apiUrl)
       .then(response => {
         setSlideData(response.data.ads);
-        console.log(slideData)
+        console.log(sliedData)
         console.log(response.data.ads)
-        
+
       })
       .catch(error => {
         console.error('Error fetching carousel ads:', error);
@@ -62,11 +62,17 @@ function Advertise() {
     <div className="advertise_container">
       <div className="slide_container">
         {sliedData.map((item, index) => {
-          return <Link key={index} to={`live/${item.id}`}><img key={index} src={`${import.meta.env.VITE_DJANGO_API}/${item.crousel_add_img}`} className={slide === index ? "slider_img_div" : "slider_img_div_hidden"} /></Link>;
+          return <Link
+            key={index}
+            to={{
+              pathname: `live/${item.id}`,
+              state: { itemData: item }  // Pass the data here
+            }}
+          ><img key={index} src={`${import.meta.env.VITE_DJANGO_API}/${item.crousel_add_img}`} className={slide === index ? "slider_img_div" : "slider_img_div_hidden"} /></Link>;
         })}
         <span className="indicators">
-          {sliedData.map((_, index)=> {
-            return <button key={index} onClick={()=> setSlide(index)} className={slide === index ? "indicator indicator_active": "indicator"}></button>
+          {sliedData.map((_, index) => {
+            return <button key={index} onClick={() => setSlide(index)} className={slide === index ? "indicator indicator_active" : "indicator"}></button>
           })}
         </span>
       </div>
@@ -76,13 +82,13 @@ function Advertise() {
           <a href={ads.banner_add_home_one_url}>
             <img src={`${import.meta.env.VITE_DJANGO_API}/${ads.banner_add_home_one}`} alt="Home Banner One" />
           </a>
-          
+
         )}
         {ads.banner_add_home_two && (
           <a href={ads.banner_add_home_two_url}>
             <img src={`${import.meta.env.VITE_DJANGO_API}/${ads.banner_add_home_two}`} alt="Home Banner Two" />
           </a>
-          
+
         )}
       </div>
     </div>
