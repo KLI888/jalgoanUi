@@ -62,13 +62,8 @@ function Advertise() {
     <div className="advertise_container">
       <div className="slide_container">
         {sliedData.map((item, index) => {
-          return <Link
-            key={index}
-            to={{
-              pathname: `live/${item.id}`,
-              state: { itemData: item }  // Pass the data here
-            }}
-          ><img key={index} src={`${import.meta.env.VITE_DJANGO_API}/${item.crousel_add_img}`} className={slide === index ? "slider_img_div" : "slider_img_div_hidden"} /></Link>;
+          return <Link key={index} to={`/live/${item.id}`} state={{ itemData: item }}>
+          <img key={index} src={`${import.meta.env.VITE_DJANGO_API}/${item.crousel_add_img}`} className={slide === index ? "slider_img_div" : "slider_img_div_hidden"} /></Link>;
         })}
         <span className="indicators">
           {sliedData.map((_, index) => {
