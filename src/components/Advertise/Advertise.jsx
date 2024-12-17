@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect  } from 'react';
 import './Advertise.css';
 import axios from 'axios';
@@ -28,13 +27,9 @@ function Advertise() {
     axios.get(apiUrl)
       .then(response => {
         setSlideData(response.data.ads);
-        console.log(sliedData)
-        console.log(response.data)
+        console.log(slideData)
+        console.log(response.data.ads)
         
-  useEffect(() => {
-    axios.get(apiUrl)
-      .then(response => {
-        setSlideData(response.data.ads);
       })
       .catch(error => {
         console.error('Error fetching carousel ads:', error);
@@ -67,22 +62,11 @@ function Advertise() {
     <div className="advertise_container">
       <div className="slide_container">
         {sliedData.map((item, index) => {
-          return <a key={index} href={item.id}><img key={index} src={`${import.meta.env.VITE_DJANGO_API}/${item.crousel_add_img}`} className={slide === index ? "slider_img_div" : "slider_img_div_hidden"} /></a>;
+          return <Link key={index} to={item.id}><img key={index} src={`${import.meta.env.VITE_DJANGO_API}/${item.crousel_add_img}`} className={slide === index ? "slider_img_div" : "slider_img_div_hidden"} /></Link>;
         })}
         <span className="indicators">
           {sliedData.map((_, index)=> {
             return <button key={index} onClick={()=> setSlide(index)} className={slide === index ? "indicator indicator_active": "indicator"}></button>
-          return <Link key={index} to={`/live/${item.id}`}>
-            <img
-              src={`${import.meta.env.VITE_DJANGO_API}/${item.crousel_add_img}`}
-              className={slide === index ? "slider_img_div" : "slider_img_div_hidden"}
-            />
-          </Link>
-            ;
-        })}
-        <span className="indicators">
-          {sliedData.map((_, index) => {
-            return <button key={index} onClick={() => setSlide(index)} className={slide === index ? "indicator indicator_active" : "indicator"}></button>
           })}
         </span>
       </div>
@@ -93,13 +77,12 @@ function Advertise() {
             <img src={`${import.meta.env.VITE_DJANGO_API}/${ads.banner_add_home_one}`} alt="Home Banner One" />
           </a>
           
-
         )}
         {ads.banner_add_home_two && (
           <a href={ads.banner_add_home_two_url}>
             <img src={`${import.meta.env.VITE_DJANGO_API}/${ads.banner_add_home_two}`} alt="Home Banner Two" />
           </a>
-
+          
         )}
       </div>
     </div>
