@@ -22,29 +22,29 @@ function Live() {
   // Fetch ads data when component mounts
   useEffect(() => {
     getCsrfToken(); // Fetch CSRF token first
-
+  
     const fetchAdsData = async () => {
       try {
+        console.log("Fetching ads data with token", csrfToken);
         const response = await axios.get(apiUrl, {
           headers: {
             'X-CSRFToken': csrfToken,
             'Authorization': `Bearer ${localStorage.getItem('token')}`,
           },
-          params: {
-            id: id,
-          },
+          params: { id: id },
         });
         setAds(response.data); // Set fetched ads data
         console.log(response.data); // For debugging
       } catch (error) {
-        console.error('Error fetching ads data:', error);
+        console.error('Error fetching ads data:', error.response?.data || error);
       }
     };
-
+  
     if (csrfToken) {
       fetchAdsData(); // Fetch ads only after CSRF token is available
     }
-  }, [csrfToken, id]); // Rerun effect when csrfToken or id changes
+  }, []); // Rerun effect when csrfToken or id changes
+  // Rerun effect when csrfToken or id changes
 
   if (!ads.crousel_add_img_code) {
     return <div>Loading...</div>; // Loading state if ad data is not available
