@@ -32,9 +32,8 @@ const router = createBrowserRouter(
       <Route path='articleView/:articleId' element={<ArticleViewPage />} />
 
       <Route path='searchResults' element={<SearchPage />} />
-      
+      <Route path='live:id' element={<Live />} />
       <Route path='about' element={<AboutPage />} />
-      <Route path='live:id' element={<Live />} />/
       <Route path='contact' element={<ContactPage />} />
       <Route path='termsAndCondition' element={<TermsPage />} />
       <Route path='editForm/:shopId' element={<AddListingForm is_edit={true}/>} />
