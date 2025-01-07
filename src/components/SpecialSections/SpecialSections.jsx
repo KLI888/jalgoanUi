@@ -18,7 +18,7 @@ function SpecialSections() {
           <a href=' https://jalgaon.gov.in/tourist-places/' target='_blank'>
             <div className="special_btn btn_freeList">Tourist places</div>
           </a>
-          <Link to='/'>
+          <Link to='/events'>
             <div className="special_btn btn_events">Events</div>
           </Link>
         </div>
