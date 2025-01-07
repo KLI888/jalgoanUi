@@ -10,7 +10,7 @@
     top: 56px;
     width: 100%;
     z-index: 1000;
-    /* background-color: #a81e1e; */
+    background-color: #fff;
 }
 
 .select_city {
@@ -48,7 +48,7 @@
 
 @media (max-width: 855px) {
     .select_city {
-        flex: 3;
+        /* flex: 3; */
     }
 }
 
@@ -56,10 +56,11 @@
     .nav_serach {
         margin-top: 11px;
         top: 35px;
+        gap: 10px;
         width: 100vw;
     }
     .select_city {
-        flex: 3;
+        /* flex: 3; */
         font-size: 12px;
     }
     .main_search .input_business {
