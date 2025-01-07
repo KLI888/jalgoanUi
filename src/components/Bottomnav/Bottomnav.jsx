@@ -63,7 +63,7 @@ function Bottomnav() {
         ) : (
           <NavLink onClick={() => setCloseForm(!closeForm)} className={`bottom_nav_links ${activeLink === 'account' ? 'active' : ''}`}>
             <i className='bx bx-user-circle'></i>
-            <p>Account</p>
+            <p>Login</p>
           </NavLink>
         )}
         {/* <Link
