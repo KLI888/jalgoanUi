@@ -71,7 +71,6 @@ const Navbar = () => {
                         </NavLink>
                     </ul>
                     <div className="nav_login">
-                        <i className='bx bx-heart'></i>
                         {user ? (
                             <>
                                 <NavLink to='/account'><p className="login_btn">Account: {user?.phone_number}</p></NavLink>
