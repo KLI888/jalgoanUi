@@ -43,6 +43,7 @@ function BusinessCard({ businessData, is_like, is_edit=false }) {
         <div className="business_card">
             <div className="business_imgg">
                 <img src={`${img_url}${businessData.business_banner}`} alt="" />
+                <img src={`${businessData.business_banner}`} alt="" />
             </div>
             <div className="business_info">
                 <p className='business_name'>
