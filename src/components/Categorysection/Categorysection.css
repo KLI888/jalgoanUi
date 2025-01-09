@@ -68,6 +68,7 @@
     width: 100%;
     height: 100%;
     flex-direction: 1;
+    border-radius: 15px;
 }
 .business_info {
     flex: 3;
