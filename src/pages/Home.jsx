@@ -21,9 +21,9 @@ function Home() {
     if (hasVisited == 'false') {
       setCloseForm(!closeForm)
       // setShowPopup(true);
-      if(user){
-        localStorage.setItem("hasVisited", "true");
-      } 
+      // if(user){
+      //   localStorage.setItem("hasVisited", "true");
+      // } 
     }
   }, []);
 

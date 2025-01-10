@@ -83,6 +83,7 @@ function LoginSignup() {
       localStorage.setItem('user', JSON.stringify(user));
       setCloseForm(true);
       console.log('Login successful', user);
+      localStorage.setItem("hasVisited", "true");
 
       // Fetch token key
       await getTokenKey(csrfToken);
