@@ -8,16 +8,18 @@ import SpecialSections from '../components/SpecialSections/SpecialSections';
 import LoginSignup from '../components/LoginSignup/LoginSignup';
 import { FormContext } from "../context/FormContext";
 import { UserContext } from '../context/UserContext';
+import { LoginContext } from '../context/LoginContext';
 
 function Home() {
   const [showPopup, setShowPopup] = useState(false);
   const { closeForm, setCloseForm } = useContext(FormContext);
   const { user, setUser } = useContext(UserContext);
+  const { isLogin, setIsLogin } = useContext(LoginContext);
 
   useEffect(() => {
     const hasVisited = localStorage.getItem("hasVisited");
-    setCloseForm(!closeForm)
     if (!hasVisited) {
+      setCloseForm(!closeForm)
       // setShowPopup(true); 
       localStorage.setItem("hasVisited", "true");
     }
