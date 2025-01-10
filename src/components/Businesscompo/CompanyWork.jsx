@@ -22,7 +22,7 @@ function CompanyWork({ businessData }) {
                     params: { shop_listing: businessData.id },
                     headers: {
                         'Authorization': `Token ${tokenKey}`,
-                        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                        // 'Authorization': `Bearer ${localStorage.getItem('token')}`,
                         'X-CSRFToken': csrfToken,
                     },
                 });

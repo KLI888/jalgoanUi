@@ -9,7 +9,7 @@ function AccountLinks({activeLink, setActiveLink}) {
   const logoutFuntion = ()=> {
     localStorage.removeItem('token');
     localStorage.removeItem('tokenKey');
-    localStorage.removeItem("hasVisited");
+    localStorage.setItem("hasVisited", 'false');
     navigate('/'); // Redirect to home page after logout
     window.location.reload(); // Refresh the page
 
