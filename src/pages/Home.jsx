@@ -13,8 +13,8 @@ function Home() {
 
   useEffect(() => {
     const hasVisited = localStorage.getItem("hasVisited");
+    setCloseForm(!closeForm)
     if (!hasVisited) {
-      setCloseForm(!closeForm)
       // setShowPopup(true); 
       localStorage.setItem("hasVisited", "true");
     }
@@ -39,9 +39,9 @@ function Home() {
         <div className="popup-overlay">
           <div className="popup-content">
             <LoginSignup />
-            <button className="close-popup" onClick={handleClosePopup}>
+            {/* <button className="close-popup" onClick={handleClosePopup}>
               Close
-            </button>
+            </button> */}
           </div>
         </div>
       )}
