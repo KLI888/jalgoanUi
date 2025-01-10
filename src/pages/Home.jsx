@@ -7,9 +7,12 @@ import Services from '../components/Services/Services';
 import SpecialSections from '../components/SpecialSections/SpecialSections';
 import LoginSignup from '../components/LoginSignup/LoginSignup';
 import { FormContext } from "../context/FormContext";
+import { UserContext } from '../context/UserContext';
+
 function Home() {
   const [showPopup, setShowPopup] = useState(false);
   const { closeForm, setCloseForm } = useContext(FormContext);
+  const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
     const hasVisited = localStorage.getItem("hasVisited");
@@ -34,17 +37,11 @@ function Home() {
       <SpecialSections />
       <LoginSignup />
 
-      {/* Show the login popup if the state is true */}
-      {closeForm && (
-        <div className="popup-overlay">
-          <div className="popup-content">
-            <LoginSignup />
-            {/* <button className="close-popup" onClick={handleClosePopup}>
-              Close
-            </button> */}
-          </div>
-        </div>
+      {!user && closeForm && (
+        <LoginSignup />
       )}
+
+
 
       {/* Add some basic styles for the popup */}
       {/* <style>
