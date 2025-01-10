@@ -6,8 +6,7 @@ import Releatedarticles from '../components/Releatedarticles/Releatedarticles';
 import Services from '../components/Services/Services';
 import SpecialSections from '../components/SpecialSections/SpecialSections';
 import LoginSignup from '../components/LoginSignup/LoginSignup';
-import { FormContext } from '../../context/FormContext';
-
+import { FormContext } from "../context/FormContext";
 function Home() {
   const [showPopup, setShowPopup] = useState(false);
   const { closeForm, setCloseForm } = useContext(FormContext);
