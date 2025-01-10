@@ -20,8 +20,10 @@ function Home() {
     const hasVisited = localStorage.getItem("hasVisited");
     if (hasVisited == 'false') {
       setCloseForm(!closeForm)
-      // setShowPopup(true); 
-      localStorage.setItem("hasVisited", "true");
+      // setShowPopup(true);
+      if(user){
+        localStorage.setItem("hasVisited", "true");
+      } 
     }
   }, []);
 
