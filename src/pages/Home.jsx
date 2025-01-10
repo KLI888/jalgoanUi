@@ -32,9 +32,10 @@ function Home() {
       <Categorytile />
       <Releatedarticles />
       <SpecialSections />
+      <LoginSignup />
 
       {/* Show the login popup if the state is true */}
-      {showPopup && (
+      {closeForm && (
         <div className="popup-overlay">
           <div className="popup-content">
             <LoginSignup />
