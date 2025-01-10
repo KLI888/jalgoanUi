@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Advertise from '../components/Advertise/Advertise';
 import Categorytile from '../components/Categorytile/Categorytile';
 import Stocktickle from '../components/Stocktickle/Stocktickle';
@@ -9,11 +9,13 @@ import LoginSignup from '../components/LoginSignup/LoginSignup';
 
 function Home() {
   const [showPopup, setShowPopup] = useState(false);
+  const { closeForm, setCloseForm } = useContext(FormContext);
 
   useEffect(() => {
     const hasVisited = localStorage.getItem("hasVisited");
     if (!hasVisited) {
-      setShowPopup(true); 
+      setCloseForm(!closeForm)
+      // setShowPopup(true); 
       localStorage.setItem("hasVisited", "true");
     }
   }, []);
@@ -44,7 +46,7 @@ function Home() {
       )}
 
       {/* Add some basic styles for the popup */}
-      <style>
+      {/* <style>
         {`
           .popup-overlay {
             position: fixed;
@@ -77,7 +79,7 @@ function Home() {
             cursor: pointer;
           }
         `}
-      </style>
+      </style> */}
     </div>
   );
 }
