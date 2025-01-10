@@ -314,7 +314,7 @@ function AddListingForm({ is_edit = false }) {
                         <hr className="form_hr" />
                         <div className="business_info_div business_details">
                             <h3>Add Business Details</h3>
-                            <div className="form_input_fields">
+                            <div className="form_input_fields form_name_input">
                                 <div className="input_data">
                                     <label htmlFor="businessName">Business Name</label>
                                     <input
@@ -340,7 +340,7 @@ function AddListingForm({ is_edit = false }) {
                         <hr className="form_hr" />
                         <div className="business_contactdet">
                             <h3>Add Business Contact Info</h3>
-                            <div className="form_input_fields">
+                            <div className="form_input_fields form_contact_input">
                                 <div className="input_data">
                                     <label htmlFor="conEmail">Contact Email</label>
                                     <input
@@ -403,9 +403,9 @@ function AddListingForm({ is_edit = false }) {
                         <hr className="form_hr" />
                         <div className="business_subDomains">
                             <h3>Business Sub-Domains</h3>
-                            <div className="form_input_fields">
+                            <div className="form_input_fields form_domains_input">
+                                <label htmlFor="domainOne">Sub-Domains</label>
                                 <div className="input_data">
-                                    <label htmlFor="domainOne">Sub-Domains</label>
                                     <input
                                         type="text"
                                         name="sub_domain_one"

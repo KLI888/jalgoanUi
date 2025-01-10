@@ -20,18 +20,6 @@
     border: 1px solid #e5e7eb;
 }
 
-.form_name_input, .form_contact_input {
-    display: flex;
-}
-.form_name_input .input_data,
-.form_contact_input .input_data {
-    flex: 1;
-}
-
-.form_domains_input .input_data {
-    flex-direction: row;
-}
-
 .form_input_fields .input_data {
     display: flex;
     justify-content: start;

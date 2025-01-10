@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import Select from 'react-select';
 import axios from 'axios';
-import './AddListingForm.css';
+import './AddAdvertiseForm.css';
 import { UserContext } from '../../context/UserContext';
 const adTypeOptions = [
     { value: 'BA', label: 'Banner Ads' },
