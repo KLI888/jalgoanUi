@@ -30,6 +30,8 @@
 
 .form_domains_input .input_data {
     flex-direction: row;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
 .form_input_fields .input_data {
