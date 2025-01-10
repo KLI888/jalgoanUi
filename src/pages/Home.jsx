@@ -14,7 +14,7 @@ function Home() {
   useEffect(() => {
     const hasVisited = localStorage.getItem("hasVisited");
     if (!hasVisited) {
-      setCloseForm(false)
+      setCloseForm(!closeForm)
       // setShowPopup(true); 
       localStorage.setItem("hasVisited", "true");
     }
