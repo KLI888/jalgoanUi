@@ -1,12 +1,37 @@
-import React from 'react'
-import './Event.css'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+import './Event.css';
+
 function EventsList() {
+    const [events, setEvents] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const djangoApi = import.meta.env.VITE_DJANGO_API;
+
+    useEffect(() => {
+        // Fetch events from the API
+        axios
+            .get(`${djangoApi}/events/`) // Replace with your actual API endpoint
+            .then((response) => {
+                setEvents(response.data); // Assuming the response is an array of events
+                setIsLoading(false);
+            })
+            .catch((error) => {
+                console.error('Error fetching events:', error);
+                setIsLoading(false);
+            });
+    }, []);
+
+    if (isLoading) {
+        return <p>Loading events...</p>;
+    }
+
     return (
         <div className="events-container">
-            <div class="events-header">
+            <div className="events-header">
                 <h1>Events</h1>
             </div>
-            <div class="filters">
+            <div className="filters">
                 <select>
                     <option>Live</option>
                 </select>
@@ -18,64 +43,23 @@ function EventsList() {
                 </select>
                 <button>Filter</button>
             </div>
-            <div class="events-grid">
-                <a href="">
-                    <div class="event-card">
-                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/82/TheNewsTodayCover.jpg/240px-TheNewsTodayCover.jpg" alt="Event Image" />
-                        <div class="event-content">
-                            <p class="date">FEB 20</p>
-                            <h3>TechnoSpark 2025</h3>
-                            <p>A tech extravaganza featuring hackathons, AI workshops, and a startup showcase.</p>
+            <div className="events-grid">
+                {events.map((event) => (
+                    <Link to={`/events/${event.event_slug}`} key={event.event_slug} className="event-link">
+                        <div className="event-card">
+                            <img src={`${djangoApi}/${event.img}`} alt={event.title} />
+                            <div className="event-content">
+                                <p className="date">{new Date(event.start_date).toLocaleDateString()}</p>
+                                <h3>{event.title}</h3>
+                                <p>{event.description.slice(0, 100)}...</p>
+                            </div>
                         </div>
-                    </div>
-                </a>
+                    </Link>
+                ))}
+            </div>
 
-                <a href="">
-                    <div class="event-card">
-                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/82/TheNewsTodayCover.jpg/240px-TheNewsTodayCover.jpg" alt="Event Image" />
-                        <div class="event-content">
-                            <p class="date">FEB 20</p>
-                            <h3>TechnoSpark 2025</h3>
-                            <p>A tech extravaganza featuring hackathons, AI workshops, and a startup showcase.</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="">
-                    <div class="event-card">
-                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/82/TheNewsTodayCover.jpg/240px-TheNewsTodayCover.jpg" alt="Event Image" />
-                        <div class="event-content">
-                            <p class="date">FEB 20</p>
-                            <h3>TechnoSpark 2025</h3>
-                            <p>A tech extravaganza featuring hackathons, AI workshops, and a startup showcase.</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="">
-                    <div class="event-card">
-                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/82/TheNewsTodayCover.jpg/240px-TheNewsTodayCover.jpg" alt="Event Image" />
-                        <div class="event-content">
-                            <p class="date">FEB 20</p>
-                            <h3>TechnoSpark 2025</h3>
-                            <p>A tech extravaganza featuring hackathons, AI workshops, and a startup showcase.</p>
-                        </div>
-                    </div>
-                </a>
-                <a href="">
-                    <div class="event-card">
-                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/8/82/TheNewsTodayCover.jpg/240px-TheNewsTodayCover.jpg" alt="Event Image" />
-                        <div class="event-content">
-                            <p class="date">FEB 20</p>
-                            <h3>TechnoSpark 2025</h3>
-                            <p>A tech extravaganza featuring hackathons, AI workshops, and a startup showcase.</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="see-more">
-                <button>See More</button>
-            </div>
         </div>
-    )
+    );
 }
 
-export default EventsList
+export default EventsList;
