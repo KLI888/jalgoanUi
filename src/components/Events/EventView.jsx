@@ -2,14 +2,16 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./Event.css"; // Import the CSS for styling
 
-const EventView = ({ videoId, title, description, location, startDate, endDate }) => {
+// const EventView = ({ videoId, title, description, location, startDate, endDate }) => {
+const EventView = () => {
   return (
     <div className="event-view-container">
       {/* YouTube Video */}
       <div className="event-video-container">
         <iframe
           className="event-video"
-          src={`https://www.youtube.com/embed/${videoId}`}
+        //   src={`https://www.youtube.com/embed/${videoId}`}
+          src="https://www.youtube.com/embed/f_4TSzJYjO8?si=BSkD94BNQWsVcL2j"
           title={title}
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -32,13 +34,13 @@ const EventView = ({ videoId, title, description, location, startDate, endDate }
   );
 };
 
-EventView.propTypes = {
-  videoId: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  location: PropTypes.string.isRequired,
-  startDate: PropTypes.string.isRequired,
-  endDate: PropTypes.string.isRequired,
-};
+// EventView.propTypes = {
+//   videoId: PropTypes.string.isRequired,
+//   title: PropTypes.string.isRequired,
+//   description: PropTypes.string.isRequired,
+//   location: PropTypes.string.isRequired,
+//   startDate: PropTypes.string.isRequired,
+//   endDate: PropTypes.string.isRequired,
+// };
 
 export default EventView;
