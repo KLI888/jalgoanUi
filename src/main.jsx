@@ -41,7 +41,7 @@ const router = createBrowserRouter(
       <Route path='termsAndCondition' element={<TermsPage />} />
       <Route path='news' element={<NewsView />} />
       <Route path='events' element={<EventsList />} />
-      <Route path='events/eventView' element={<EventView />} />
+      <Route path='events/:slug' element={<EventView />} />
       <Route path='editForm/:shopId' element={<AddListingForm is_edit={true}/>} />
     </Route>
   )
