@@ -36,7 +36,7 @@ const NewsView = () => {
       <div className="main-content">
         <h1>{title}</h1>
         <p><small>{news_date}, by @{publisher}</small></p>
-        <img src={`${djangoApi}/{img}`} alt={title || "News Image"} />
+        <img src={`${djangoApi}/${img}`} alt={title || "News Image"} />
         <p>Location: {location}</p>
         <p>{description}</p>
 
