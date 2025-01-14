@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -31,7 +32,7 @@ function News() {
 
             <div className="news-grid">
                 {news.map((event) => (    
-                    <Link to={`/news/${news.news_slug}`} key={event.news_slug} className="event-link">
+                    <Link to={`/news/${news.news_slug}`} key={news.news_slug} className="event-link">
                         <div className="event-card">
                             <img src={`${news.img}`} alt={event.title} />
                             <div className="event-content">
