@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -29,22 +28,35 @@ function News() {
 
     return (
         <div className="news-container">
-
             <div className="news-grid">
-                {news.map((newss) => (    
+                {news.map((newss) => (
                     <Link to={`/news/${newss.news_slug}`} key={newss.news_slug} className="news-link">
                         <div className="news-card">
-                            <img src={`${newss.img}`} alt={newss.title} />
+                            {/* Provide a default fallback image if newss.img is undefined */}
+                            <img
+                                src={newss.img || 'default-image.jpg'}
+                                alt={newss.title || 'No Title'}
+                            />
                             <div className="news-content">
-                                <p className="date">{new Date(newss.news_date).toLocaleDateString()}</p>
-                                <h3>{newss.title}</h3>
-                                <p>{newss.description.slice(0, 100)}...</p>
+                                {/* Fallback for news date */}
+                                <p className="date">
+                                    {newss.news_date
+                                        ? new Date(newss.news_date).toLocaleDateString()
+                                        : 'No Date'}
+                                </p>
+                                {/* Fallback for title */}
+                                <h3>{newss.title || 'No Title'}</h3>
+                                {/* Fallback for description */}
+                                <p>
+                                    {newss.description
+                                        ? `${newss.description.slice(0, 100)}...`
+                                        : 'No description available.'}
+                                </p>
                             </div>
                         </div>
                     </Link>
                 ))}
             </div>
-
         </div>
     );
 }
