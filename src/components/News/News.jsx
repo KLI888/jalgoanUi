@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import './Event.css';
+import './NewsView.css';
 
 function News() {
     const [news, setNews] = useState([]);
