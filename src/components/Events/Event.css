@@ -130,14 +130,16 @@
 
 
 
+
 .event-view-container {
     display: flex;
     flex-direction: column;
     gap: 16px;
     padding: 16px;
     max-width: 1000px;
-    margin: 120px auto auto auto;
-}
+    margin: 100px auto auto aotu ;
+  }
+  
   .event-video-container {
     position: relative;
     padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
