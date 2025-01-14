@@ -85,6 +85,7 @@
     align-items: start;
     gap: 10px;
     text-decoration: none;
+    margin: 120px auto auto auto;
 }
 
 .news-grid a {
