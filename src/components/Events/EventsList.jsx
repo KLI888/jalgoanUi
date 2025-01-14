@@ -47,7 +47,7 @@ function EventsList() {
                 {events.map((event) => (    
                     <Link to={`/events/${event.event_slug}`} key={event.event_slug} className="event-link">
                         <div className="event-card">
-                            <img src={`${djangoApi}/${event.img}`} alt={event.title} />
+                            <img src={`${event.img}`} alt={event.title} />
                             <div className="event-content">
                                 <p className="date">{new Date(event.start_date).toLocaleDateString()}</p>
                                 <h3>{event.title}</h3>
