@@ -22,6 +22,7 @@ import Live from './components/LiveStream/Live';
 import EventsList from './components/Events/EventsList';
 import NewsView from './components/News/NewsView';
 import EventView from './components/Events/EventView';
+import News from './components/News/News';
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout />}>
@@ -39,7 +40,8 @@ const router = createBrowserRouter(
       <Route path='about' element={<AboutPage />} />
       <Route path='contact' element={<ContactPage />} />
       <Route path='termsAndCondition' element={<TermsPage />} />
-      <Route path='news' element={<NewsView />} />
+      <Route path='news' element={<News />} />
+      <Route path='news/:slug' element={<NewsView />} />
       <Route path='events' element={<EventsList />} />
       <Route path='events/:slug' element={<EventView />} />
       <Route path='editForm/:shopId' element={<AddListingForm is_edit={true}/>} />

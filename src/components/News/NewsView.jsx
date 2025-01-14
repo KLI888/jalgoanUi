@@ -1,17 +1,44 @@
 import React from 'react';
 import './NewsView.css';
 const NewsView = () => {
+  const djangoApi = import.meta.env.VITE_DJANGO_API;
+  const { slug } = useParams(); // Get the event_slug from the URL
+  const [newsData, setNewsData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchNewsData = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get(`${djangoApi}/app/news/${slug}/`); // Fetch event data by slug
+        setNewsData(response.data);
+      } catch (err) {
+        setError("Failed to load event data.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchNewsData();
+  }, [slug]);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
+
+  const { img, title, description, location, news_date, publisher, video_link } = newsData;
   return (
     <div className="container">
       <div className="main-content">
-        <h1>The Scalability Solution: Understanding Layer One vs. Layer Two Blockchains</h1>
-        <p><small>03 Jan 2024, 8:00pm by @Simplesphere</small></p>
+        <h1>{title}</h1>
+        <p><small>{news_date}, by @{publisher}</small></p>
         <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmYHmCuZGk-GbLOaW27SJDAcnrDktkpAfArQ&s"
+          src={img}
           alt="Blockchain Image"
         />
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti. Integer a velit nec nulla consectetur suscipit vel vitae felis.</p>
-        <p>Proin accumsan nisl sed arcu fermentum, non cursus purus laoreet. Maecenas pharetra neque nec turpis porttitor, a hendrerit mauris scelerisque.</p>
+        <p>Location: {location}</p>
+        <p>{description}</p>
+        
       </div>
       <aside className="sidebar">
         <h2>More News</h2>
