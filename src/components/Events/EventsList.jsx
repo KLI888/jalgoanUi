@@ -11,7 +11,7 @@ function EventsList() {
     useEffect(() => {
         // Fetch events from the API
         axios
-            .get(`${djangoApi}/events/`) // Replace with your actual API endpoint
+            .get(`${djangoApi}/eventts/`) // Replace with your actual API endpoint
             .then((response) => {
                 setEvents(response.data); // Assuming the response is an array of events
                 setIsLoading(false);
@@ -44,7 +44,7 @@ function EventsList() {
                 <button>Filter</button>
             </div>
             <div className="events-grid">
-                {events.map((event) => (
+                {events.map((event) => (    
                     <Link to={`/events/${event.event_slug}`} key={event.event_slug} className="event-link">
                         <div className="event-card">
                             <img src={`${djangoApi}/${event.img}`} alt={event.title} />
