@@ -30,21 +30,7 @@ function News() {
 
     return (
         <div className="news-container">
-            <div className="news-header">
-                <h1>news</h1>
-            </div>
-            <div className="filters">
-                <select>
-                    <option>Live</option>
-                </select>
-                <select>
-                    <option>Event Type</option>
-                </select>
-                <select>
-                    <option>Any Category</option>
-                </select>
-                <button>Filter</button>
-            </div>
+
             <div className="news-grid">
                 {news.map((event) => (    
                     <Link to={`/news/${news.news_slug}`} key={event.news_slug} className="event-link">

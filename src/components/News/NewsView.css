@@ -1,4 +1,4 @@
-.container {
+.news-container {
     display: flex;
     flex-wrap: wrap;
     margin: 100px 20px 20px 20px;
@@ -57,7 +57,7 @@
         height: 50px;
     }
 
-    .container h1 {
+    .news-container h1 {
         font-size: 18px
     }
 

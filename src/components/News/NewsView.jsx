@@ -28,7 +28,7 @@ const NewsView = () => {
 
   const { img, title, description, location, news_date, publisher, video_link } = newsData;
   return (
-    <div className="container">
+    <div className="news-container">
       <div className="main-content">
         <h1>{title}</h1>
         <p><small>{news_date}, by @{publisher}</small></p>
