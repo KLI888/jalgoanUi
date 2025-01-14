@@ -34,7 +34,7 @@ function News() {
                         <div className="news-card">
                             {/* Provide a default fallback image if newss.img is undefined */}
                             <img
-                                src={newss.img || 'default-image.jpg'}
+                                src={newss.img}
                                 alt={newss.title || 'No Title'}
                             />
                             <div className="news-content">
