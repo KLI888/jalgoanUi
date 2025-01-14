@@ -4,6 +4,7 @@ import axios from "axios";
 import "./Event.css";
 
 const EventView = () => {
+    const djangoApi = import.meta.env.VITE_DJANGO_API;
     const { slug } = useParams(); // Get the event_slug from the URL
     const [eventData, setEventData] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -13,7 +14,7 @@ const EventView = () => {
         const fetchEventData = async () => {
             try {
                 setLoading(true);
-                const response = await axios.get(`/api/events/${slug}/`); // Fetch event data by slug
+                const response = await axios.get(`${djangoApi}/app/eventts/${slug}/`); // Fetch event data by slug
                 setEventData(response.data);
             } catch (err) {
                 setError("Failed to load event data.");
