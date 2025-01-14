@@ -41,7 +41,7 @@ const NewsView = () => {
         <p>{description}</p>
 
       </div>
-      <aside className="sidebar">
+      {/* <aside className="sidebar">
         <h2>More News</h2>
         {Array(4).fill(null).map((_, index) => (
           <div className="news-item" key={index}>
@@ -52,7 +52,7 @@ const NewsView = () => {
             <p>U.S. downs suspected Chinese spy balloon</p>
           </div>
         ))}
-      </aside>
+      </aside> */}
     </div>
   );
 };
