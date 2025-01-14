@@ -31,14 +31,14 @@ function News() {
         <div className="news-container">
 
             <div className="news-grid">
-                {news.map((news) => (    
-                    <Link to={`/news/${news.news_slug}`} key={news.news_slug} className="news-link">
+                {news.map((newss) => (    
+                    <Link to={`/news/${newss.news_slug}`} key={newss.news_slug} className="news-link">
                         <div className="news-card">
-                            <img src={`${news.img}`} alt={news.title} />
+                            <img src={`${newss.img}`} alt={newss.title} />
                             <div className="news-content">
-                                <p className="date">{new Date(news.news_date).toLocaleDateString()}</p>
-                                <h3>{news.title}</h3>
-                                <p>{news.description.slice(0, 100)}...</p>
+                                <p className="date">{new Date(newss.news_date).toLocaleDateString()}</p>
+                                <h3>{newss.title}</h3>
+                                <p>{newss.description.slice(0, 100)}...</p>
                             </div>
                         </div>
                     </Link>
