@@ -33,25 +33,6 @@ const EventView = () => {
 
     return (
         <div className="event-view-container">
-            {/* Event Image */}
-            <div className="event-image-container">
-                <img className="event-image" src={img} alt={title} />
-            </div>
-
-            {/* Event Details */}
-            <div className="event-details">
-                <h1 className="event-title">{title}</h1>
-                <p className="event-description">{description}</p>
-
-                <div className="event-info">
-                    <p><strong>Location:</strong> {location}</p>
-                    <p><strong>Event Date:</strong> {new Date(event_date).toLocaleDateString()}</p>
-                    <p><strong>Start Date:</strong> {new Date(start_date).toLocaleDateString()}</p>
-                    <p><strong>End Date:</strong> {new Date(end_date).toLocaleDateString()}</p>
-                </div>
-            </div>
-
-            {/* YouTube Video (if available) */}
             {video_link && (
                 <div className="event-video-container">
                     <iframe
@@ -64,6 +45,21 @@ const EventView = () => {
                     ></iframe>
                 </div>
             )}
+
+            {/* Event Details */}
+            <div className="event-details">
+                <h1 className="event-title">{title}</h1>
+                <p className="event-description">{description}</p>
+
+                <div className="event-info">
+                    <p><strong>Address:</strong> {location}</p>
+                    <p><strong>Event Date:</strong> {new Date(event_date).toLocaleDateString()}</p>
+                    <p><strong>Start Date:</strong> {new Date(start_date).toLocaleDateString()}</p>
+                    <p><strong>End Date:</strong> {new Date(end_date).toLocaleDateString()}</p>
+                </div>
+            </div>
+
+
         </div>
     );
 };
