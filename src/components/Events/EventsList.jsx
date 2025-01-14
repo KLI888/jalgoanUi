@@ -11,7 +11,7 @@ function EventsList() {
     useEffect(() => {
         // Fetch events from the API
         axios
-            .get(`${djangoApi}/eventts/`) // Replace with your actual API endpoint
+            .get(`${djangoApi}/app/eventts/`) // Replace with your actual API endpoint
             .then((response) => {
                 setEvents(response.data); // Assuming the response is an array of events
                 setIsLoading(false);
