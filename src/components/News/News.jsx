@@ -32,10 +32,10 @@ function News() {
 
             <div className="news-grid">
                 {news.map((event) => (    
-                    <Link to={`/news/${news.news_slug}`} key={news.news_slug} className="event-link">
-                        <div className="event-card">
+                    <Link to={`/news/${news.news_slug}`} key={news.news_slug} className="news-link">
+                        <div className="news-card">
                             <img src={`${news.img}`} alt={event.title} />
-                            <div className="event-content">
+                            <div className="news-content">
                                 <p className="date">{new Date(news.news_date).toLocaleDateString()}</p>
                                 <h3>{news.title}</h3>
                                 <p>{news.description.slice(0, 100)}...</p>

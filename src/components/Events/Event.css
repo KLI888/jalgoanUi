@@ -147,7 +147,7 @@
     overflow: hidden;
   }
   
-  .event-video {
+  .news-video {
     position: absolute;
     top: 0;
     left: 0;
@@ -155,32 +155,32 @@
     height: 100%;
   }
   
-  .event-details {
+  .news-details {
     text-align: left;
   }
   
-  .event-title {
+  .news-title {
     font-size: 1.5rem;
     margin: 8px 0;
   }
   
-  .event-description {
+  .news-description {
     font-size: 1rem;
     margin: 8px 0;
   }
   
-  .event-info p {
+  .news-info p {
     font-size: 0.9rem;
     margin: 4px 0;
   }
   
   @media (max-width: 768px) {
-    .event-title {
+    .news-title {
       font-size: 1.25rem;
     }
   
-    .event-description,
-    .event-info p {
+    .news-description,
+    .news-info p {
       font-size: 0.85rem;
     }
   }
