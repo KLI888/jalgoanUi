@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 import imageCompression from 'browser-image-compression';
 
 function AddListingForm({ is_edit = false }) {
+    
     const { shopId } = useParams();
     const djangoApi = import.meta.env.VITE_DJANGO_API;
     const apiUrl = `${djangoApi}/app/categorys/`;
