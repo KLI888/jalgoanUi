@@ -404,7 +404,9 @@ function AddListingForm({ is_edit = false }) {
                         <div className="business_subDomains">
                             <h3>Business Sub-Domains</h3>
                             <div className="form_input_fields form_domains_input">
-                                <label htmlFor="domainOne">Sub-Domains</label>
+                                <div>
+                                    <label htmlFor="domainOne">Sub-Domains</label>
+                                </div>
                                 <div className="input_data">
                                     <input
                                         type="text"
