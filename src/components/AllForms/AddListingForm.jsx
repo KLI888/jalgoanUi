@@ -705,7 +705,9 @@ function AddListingForm({ is_edit = false }) {
                             <h3>Business Sub-Domains</h3>
                             <div className="form_input_fields">
                                 <div className="input_data">
-                                    <label htmlFor="domainOne">Sub-Domains</label>
+                                    <div>
+                                        <label htmlFor="domainOne">Sub-Domains</label>
+                                    </div>
                                     <input
                                         type="text"
                                         name="sub_domain_one"
