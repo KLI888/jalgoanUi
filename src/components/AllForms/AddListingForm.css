@@ -33,7 +33,9 @@
     gap: 10px;
     flex-wrap: wrap;
 }
-
+.form_input_fields {
+    display: flex;
+}
 .form_input_fields .input_data {
     display: flex;
     justify-content: start;
@@ -41,6 +43,7 @@
     flex-direction: column;
     gap: 2px;
     padding: 5px 10px;
+    width: 50%;
 }
 
 .form_input_fields label{
@@ -59,19 +62,19 @@
     display: flex;
     flex-wrap: wrap;
 }
-.business_contactdet input{
+/* .business_contactdet input{
     width: 300px;
-}
+} */
 
 .business_categories .form_input_fields{
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     justify-content: start;
     align-items: start;
     gap: 10px;
 }
 .business_categories .business_mainCategory, .business_categories .business_subCategory {
-    width: 100%;
+    width: 50%;
 }
 
 .business_description textarea {
